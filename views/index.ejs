@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head', {title}) %>
+  <body>
+    <%- include('./partials/header', {page: 'Home'}) %>
+
+    <main>
+      <div class="mainTitle">
+        <h2>JellInventory</h2>
+        <p>Make Inventory as Fun as Jelly!</p>
+      </div>
+
+      <div class="mainMenu">
+        <ul>
+          <li><a href="/items">Items</a></li>
+          <li><a href="/categories">Categories</a></li>
+        </ul>
+      </div>
+    </main>
+
+    <%- include('./partials/footer') %>
+  </body>
+</html>
