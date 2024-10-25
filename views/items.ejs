@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head', {title}) %>
+  <body>
+    <%- include('./partials/header', {page: "Items"}) %>
+
+    <main class="items">
+      <h2>Items Inventory</h2>
+
+      <a href="/items/new" class="addItemButton">
+        <i class="fa-solid fa-plus"></i>
+      </a>
+
+      <div class="itemContent">
+        <div class="categoryBox">
+          <div class="categoryMenu">
+            <i class="fa-solid fa-list"></i> Category
+          </div>
+          
+          <ul>
+            <div class="line"></div>
+
+            <li class="categoryList">
+              <button class="categoryBtn" data-category="All">All</button>
+            </li>
+
+            <div class="line"></div>
+
+            <% categories.forEach(category => { %>
+            <li class="categoryList">
+              <button class="categoryBtn" data-category="<%= category.name %>">
+                <%= category.name %>
+              </button>
+            </li>
+            <div class="line"></div>
+            <% }) %>
+          </ul>
+        </div>
+
+        <div class="itemsBox">
+          <ul>
+            <% items.forEach(item => { %>
+            <li class="itemCard">
+              <div class="itemInnerContent">
+                <a href="/items/<%= item.id %>">
+                  <h3><%= item.name %></h3>
+                </a>
+
+                <a href="/items/<%= item.id %>">
+                  <img src="<%= item.image %>" alt="<%= item.name %> Image" />
+                </a>
+
+                <div class="priceBox">
+                  <p>$ <%= item.price %></p>
+                </div>
+              </div>
+
+              <div class="buttonContainer">
+                <button class="editBtn" data-item-id="<%= item.id %>">
+                  Edit
+                </button>
+                <button class="deleteBtn" data-item-id="<%= item.id %>">
+                  Delete
+                </button>
+              </div>
+            </li>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+
+      <%- include('./dialogDelete', {type: "item"}) %> <%-
+      include('./dialogEdit') %>
+    </main>
+
+    <%- include('./partials/footer') %>
+
+    <div class="sliderLeft"></div>
+    <div class="sliderRight"></div>
+    <div class="sliderLeftBack"></div>
+    <div class="sliderRightBack"></div>
+  </body>
+
+  <script src="./js/items.js"></script>
+</html>
