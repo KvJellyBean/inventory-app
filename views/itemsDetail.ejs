@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head', {title}) %>
+  <body>
+    <%- include('./partials/header', {page: "Item Detail"}) %>
+
+    <main class="itemsDetail">
+      <div class="itemDetailCard">
+        <div class="itemMainDetail">
+          <h2><%= item.name %></h2>
+          <p><%= item.price %></p>
+        </div>
+
+        <div class="itemImgContainer">
+          <img src="<%= item.image %>" alt="<%= item.name %> Image" />
+        </div>
+
+        <div class="itemDetail">
+          <p>x <%= item.quantity %></p>
+          <p>Categories:</p>
+          <ul>
+            <% item.categories.forEach(category => { %>
+            <li><%= category %></li>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <%- include('./partials/footer') %>
+
+    <div class="sliderLeft"></div>
+    <div class="sliderRight"></div>
+    <div class="sliderLeftBack"></div>
+    <div class="sliderRightBack"></div>
+  </body>
+
+  <script src="/js/itemsDetail.js"></script>
+</html>
