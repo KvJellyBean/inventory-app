@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head', {title}) %>
+  <body>
+    <%- include('./partials/header', {page: "Category Form"}) %>
+
+    <main class="mainCategoryForm">
+      <form action="/categories/new" method="POST" class="categoryForm">
+        <legend><%= title %></legend>
+
+        <div class="formBody">
+          <div class="formInput">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </main>
+
+    <%- include('./partials/footer') %>
+
+    <div class="sliderLeft"></div>
+    <div class="sliderRight"></div>
+    <div class="sliderLeftBack"></div>
+    <div class="sliderRightBack"></div>
+  </body>
+
+  <script src="/js/forms.js"></script>
+</html>
