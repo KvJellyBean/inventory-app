@@ -1,0 +1,17 @@
+<dialog id="deleteDialog">
+  <p>Are you sure you want to delete this <%= type %>?</p>
+  <hr />
+  <form>
+    <div class="dialogInputGroup">
+      <label for="passwordAdminDelete">Enter Password:</label>
+      <input type="password" id="passwordAdminDelete" name="password" />
+    </div>
+
+    <p id="errorTextDelete"></p>
+
+    <div class="dialogButtonGroup">
+      <button type="button" class="deleteSubmitBtn">Delete</button>
+      <button type="button" class="deleteCancelBtn">Cancel</button>
+    </div>
+  </form>
+</dialog>
