@@ -16,7 +16,7 @@
           <div class="categoryMenu">
             <i class="fa-solid fa-list"></i> Category
           </div>
-          
+
           <ul>
             <div class="line"></div>
 
@@ -42,19 +42,15 @@
             <% items.forEach(item => { %>
             <li class="itemCard">
               <div class="itemInnerContent">
-                <a href="/items/<%= item.id %>">
+                <a href="/items/<%= item.id %>" class="detailButton">
                   <h3><%= item.name %></h3>
                 </a>
 
                 <a href="/items/<%= item.id %>">
                   <img src="<%= item.image %>" alt="<%= item.name %> Image" />
                 </a>
-
-                <div class="priceBox">
-                  <p>$ <%= item.price %></p>
-                </div>
+                <div class="priceBox"><p>$ <%= item.price %></p></div>
               </div>
-
               <div class="buttonContainer">
                 <button class="editBtn" data-item-id="<%= item.id %>">
                   Edit
