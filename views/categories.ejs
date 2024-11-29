@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head', {title}) %>
+  <body>
+    <%- include('./partials/header', {page: "Categories"}) %>
+
+    <main class="categories">
+      <h2>Categories Page</h2>
+
+      <a href="/categories/new" class="addCategoryButton"
+        ><i class="fa-solid fa-plus"></i> Add Category</a
+      >
+
+      <ul>
+        <% categories.forEach(category => { %>
+        <li>
+          <a href="/items?category=<%= category.name %>"
+            ><%= category.name %></a
+          >
+
+          <div class="buttonContainer">
+            <button class="editBtn" data-category-id="<%= category.id %>">
+              Edit
+            </button>
+            <button class="deleteBtn" data-category-id="<%= category.id %>">
+              Delete
+            </button>
+          </div>
+        </li>
+        <% }) %>
+      </ul>
+
+      <%- include('./dialogDelete', {type: "category"}) %> <%-
+      include('./dialogEdit') %>
+    </main>
+
+    <%- include('./partials/footer') %>
+
+    <div class="sliderLeft"></div>
+    <div class="sliderRight"></div>
+    <div class="sliderLeftBack"></div>
+    <div class="sliderRightBack"></div>
+  </body>
+
+  <script src="./js/categories.js"></script>
+</html>
