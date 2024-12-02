@@ -1,0 +1,95 @@
+header,
+.logoTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  position: relative;
+  padding: 0.5rem 0;
+  transform: translateY(-100%);
+}
+
+.logoTitle {
+  cursor: context-menu;
+}
+
+.homeButton {
+  position: absolute;
+  left: 2.75rem;
+  cursor: pointer;
+  background-color: var(--white);
+  border: 2.9px solid var(--text);
+  border-radius: 0.25rem;
+  transition: 0.25s ease;
+
+  & a {
+    display: flex;
+    padding: 0.5rem;
+    & i {
+      font-size: 1.5rem;
+      color: var(--lightWood);
+      filter: saturate(0.7) brightness(1.6);
+      transition: 0.25s ease;
+    }
+    .fa-house,
+    .fa-arrow-left {
+      -webkit-text-stroke-width: 2.5px;
+      -webkit-text-stroke-color: var(--text);
+    }
+  }
+}
+
+.homeButton:hover {
+  background-color: var(--lightWood);
+
+  & a {
+    & i {
+      color: var(--white);
+    }
+  }
+}
+
+.woodHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+@media screen and (max-width: 680px) {
+  .homeButton {
+    left: 2%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .homeButton {
+    & a {
+      & i {
+        font-size: 1.1rem;
+      }
+    }
+  }
+  .logoTitle {
+    font-size: 0.7rem;
+
+    & img {
+      width: 60px;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .homeButton {
+    & a {
+      padding: 0.25rem;
+      & i {
+        font-size: 1rem;
+      }
+    }
+  }
+}
