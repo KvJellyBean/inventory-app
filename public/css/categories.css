@@ -1,0 +1,109 @@
+main.categories {
+  background: linear-gradient(
+    90deg,
+    var(--background) 33%,
+    var(--semiWhite) 33%,
+    var(--semiWhite) 66%,
+    var(--background) 66%
+  );
+  background-size: 33% 100%;
+  background-repeat: repeat-x;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  overflow: auto;
+
+  & .addCategoryButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 3px solid var(--text);
+    background-color: var(--darkWood);
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: 0.25s ease;
+    width: 400px;
+    align-self: center;
+    & i {
+      font-size: 1.5rem;
+      color: var(--white);
+      transition: 0.25s ease;
+      pointer-events: none;
+    }
+  }
+  & .addCategoryButton:hover {
+    background-color: var(--wood);
+    filter: contrast(1.25);
+    color: var(--text);
+    & i {
+      color: var(--text);
+    }
+  }
+  & ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+
+    & li {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border: 3px solid var(--text);
+      background-color: var(--white);
+      font-weight: bold;
+      font-size: 1.25rem;
+      cursor: context-menu;
+      transition: 0.25s ease;
+
+      & a:hover {
+        color: var(--darkWood);
+      }
+    }
+
+    & li:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+* {
+  /* border: 1px solid aqua; */
+}
+@media screen and (max-width: 768px) {
+  main.categories {
+    .addCategoryButton {
+      width: 90%;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  main.categories {
+    padding-top: 1.5rem;
+    padding-bottom: 1.25rem;
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 415px) {
+  main.categories {
+    justify-content: start;
+  }
+}
