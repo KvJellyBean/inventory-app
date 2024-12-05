@@ -1,0 +1,376 @@
+main.items {
+  background: linear-gradient(
+    90deg,
+    var(--background) 33%,
+    var(--semiWhite) 33%,
+    var(--semiWhite) 66%,
+    var(--background) 66%
+  );
+  background-size: 33% 100%;
+  background-repeat: repeat-x;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 85dvh;
+  flex-grow: 0;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding: 3rem;
+  position: relative;
+
+  .addItemButton {
+    position: fixed;
+    display: flex;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 2.5px solid var(--text);
+    bottom: 4rem;
+    right: 2rem;
+    z-index: 99999;
+    background-color: var(--wood);
+    filter: contrast(1.25);
+    cursor: pointer;
+    transition: 0.25s ease;
+
+    & i {
+      pointer-events: none;
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+  }
+
+  .addItemButton:hover {
+    transform: scale(1.1);
+    filter: contrast(1.5);
+  }
+
+  .itemContent {
+    display: flex;
+    gap: 2.5rem;
+
+    .categoryBox {
+      width: 17.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .categoryMenu {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: 3px solid var(--text);
+        background-color: var(--darkWood);
+        color: var(--white);
+        font-weight: bold;
+        font-size: 1.25rem;
+        cursor: pointer;
+        transition: 0.25s ease;
+        width: 90%;
+
+        & i {
+          font-size: 1.5rem;
+          color: var(--white);
+          transition: 0.25s ease;
+          pointer-events: none;
+        }
+      }
+
+      .categoryMenu:hover {
+        background-color: var(--wood);
+        filter: contrast(1.25);
+        color: var(--text);
+
+        & i {
+          color: var(--text);
+        }
+      }
+
+      & ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 1.5rem;
+
+        & li {
+          width: 100%;
+          display: flex;
+
+          & button {
+            width: 100%;
+            max-width: 17.5rem;
+            padding: 1.5rem 1rem;
+            text-wrap: wrap;
+            white-space: normal;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 0.5rem;
+            border: none;
+            background-color: transparent;
+            transition: 0.25s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+          }
+
+          & button:hover {
+            background-color: var(--wood);
+            border-color: var(--text);
+            transform: scale(1.1);
+            filter: contrast(1.25);
+          }
+        }
+      }
+    }
+
+    .itemsBox {
+      flex-grow: 4.5;
+    }
+  }
+}
+
+main.items ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+}
+
+.itemCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  padding-bottom: 1rem;
+  border: 3px solid var(--text);
+  border-radius: 0.45rem;
+  background-color: #f6ebc8;
+}
+
+.itemInnerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+a {
+  & h3:hover {
+    background-color: var(--wood);
+    color: var(--text);
+    filter: contrast(1.25);
+    transform: scale(0.85);
+  }
+
+  & img {
+    width: 85%;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 2rem;
+    transition: 0.25s ease;
+    cursor: pointer;
+    background-color: #fff;
+    transition: 0.25s ease;
+  }
+
+  & img:hover {
+    transform: scale(1.1);
+  }
+}
+
+h3 {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  border: 3px solid var(--text);
+  background-color: var(--darkWood);
+  color: var(--white);
+  transition: 0.25s ease;
+  pointer-events: none;
+}
+
+a:hover {
+  & img {
+    transform: scale(1.1);
+  }
+}
+
+.priceBox {
+  display: flex;
+  justify-content: center;
+  & p {
+    background-color: #fff;
+    padding: 0.55rem 1.5rem;
+    margin-bottom: 0.75rem;
+    width: 85%;
+    border-radius: 0.5rem;
+    border: 3px solid var(--text);
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: green;
+  }
+}
+
+.line {
+  height: 3px;
+  width: 100%;
+  background-color: var(--text);
+}
+
+@media screen and (max-width: 1400px) {
+  main.items {
+    padding: 3rem 1.5rem;
+    gap: 1.5rem;
+    .itemContent {
+      .categoryBox {
+        width: 10rem;
+      }
+    }
+  }
+
+  main.items ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  a {
+    & img {
+      height: 10rem;
+    }
+  }
+
+  h3 {
+    padding: 0.5rem;
+  }
+
+  .buttonContainer {
+    gap: 0.25rem;
+  }
+
+  button.editBtn,
+  button.deleteBtn {
+    padding: 0.5rem 1rem;
+    width: 6rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 910px) {
+  main.items ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 680px) {
+  main.items {
+    gap: 0rem;
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .itemContent {
+      flex-direction: column;
+      align-items: center;
+
+      .categoryBox {
+        width: 100%;
+        padding: 0.5rem 0;
+        justify-content: center;
+        gap: 1rem;
+
+        .categoryMenu {
+          display: flex;
+        }
+
+        & ul {
+          display: none;
+          width: 75%;
+
+          & li {
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  main.items {
+    padding: 3rem 0.75rem;
+
+    & h2 {
+      font-size: 1.5rem;
+    }
+
+    .addItemButton {
+      padding: 0.75rem;
+      bottom: 4rem;
+      right: 1rem;
+
+      & i {
+        font-size: 1rem;
+      }
+    }
+
+    .itemContent {
+      gap: 1.5rem;
+
+      .categoryBox {
+        & ul {
+          gap: 0.5rem;
+          & li {
+            & button {
+              padding: 1rem 0.5rem;
+              font-size: 0.9rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  main.items ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  a {
+    & img {
+      height: 7rem;
+    }
+  }
+
+  h3 {
+    font-size: 1rem;
+    padding: 0.25rem;
+  }
+
+  .priceBox {
+    & p {
+      padding: 0.25rem 0.75rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  .buttonContainer {
+    gap: 0.1rem;
+  }
+
+  button.editBtn,
+  button.deleteBtn {
+    padding: 0.25rem 0.5rem;
+    width: 4.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  main.items ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
