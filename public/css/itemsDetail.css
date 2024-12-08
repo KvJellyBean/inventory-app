@@ -1,0 +1,140 @@
+main.itemsDetail {
+  background: linear-gradient(
+    90deg,
+    var(--background) 33%,
+    var(--semiWhite) 33%,
+    var(--semiWhite) 66%,
+    var(--background) 66%
+  );
+  background-size: 33% 100%;
+  background-repeat: repeat-x;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  height: 85dvh;
+  flex-grow: 0;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding: 3rem;
+  position: relative;
+
+  & .itemDetailCard {
+    background-color: var(--white);
+    border: 3px solid var(--text);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+    width: 400px;
+    text-align: center;
+
+    .itemMainDetail {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      width: 100%;
+
+      & h2 {
+        font-size: 1.75rem;
+        word-wrap: break-word;
+        text-wrap: wrap;
+        padding: 0.25rem 1rem;
+        border: 3px solid var(--text);
+        border-radius: 0.5rem;
+        background-color: var(--wood);
+        filter: brightness(1.15);
+      }
+
+      & p {
+        color: green;
+        font-weight: 600;
+        font-size: 1.25rem;
+      }
+    }
+
+    .itemImgContainer {
+      display: flex;
+      & img {
+        width: 15rem;
+        transition: 0.2s ease;
+      }
+
+      & img:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    .itemDetail {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      & p:nth-child(1) {
+        font-weight: 600;
+        font-size: 1.5rem;
+      }
+
+      & ul {
+        display: flex;
+        gap: 0.75rem;
+        max-width: 100%;
+
+        & li {
+          border: 2px solid var(--text);
+          border-radius: 0.5rem;
+          background-color: var(--lightWood);
+          padding: 0.25rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  main.itemsDetail {
+    padding: 1rem;
+    height: 100vh;
+
+    .itemDetailCard {
+      width: 100%;
+      padding: 1rem;
+      gap: 1rem;
+
+      .itemMainDetail {
+        gap: 0.5rem;
+        & h2 {
+          font-size: 1.5rem;
+          padding: 0.25rem 0.5rem;
+        }
+
+        & p {
+          font-size: 1rem;
+        }
+      }
+
+      .itemImgContainer {
+        & img {
+          width: 10rem;
+        }
+      }
+
+      .itemDetail {
+        gap: 0.5rem;
+        & p:nth-child(1) {
+          font-size: 1.25rem;
+        }
+
+        & ul {
+          gap: 0.5rem;
+          & li {
+            padding: 0.25rem;
+          }
+        }
+      }
+    }
+  }
+}
