@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head', { title: typeof title !== "undefined" ? title :
+  "Error Page" }) %>
+
+  <body>
+    <%- include('./partials/header', {page: "Error Page"}) %>
+    <main class="errorPage">
+      <div class="contentTitle">
+        <h2>Error</h2>
+      </div>
+
+      <div class="contentMain">
+        <p><%= typeof error !== "undefined" ? error : "404 Not Found." %></p>
+        <a href="/" class="linkBackToHome">Back to Home</a>
+      </div>
+    </main>
+
+    <%- include('./partials/footer') %>
+
+    <div class="sliderLeft"></div>
+    <div class="sliderRight"></div>
+    <div class="sliderLeftBack"></div>
+    <div class="sliderRightBack"></div>
+  </body>
+
+  <script src="/js/error.js"></script>
+</html>
