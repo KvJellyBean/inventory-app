@@ -1,0 +1,341 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --background: #f6f6e9;
+  --text: #313032;
+  --wood: #ebcd7b;
+  --lightWood: #e9c248;
+  --darkWood: #b59d80;
+  --white: #ffffff;
+  --semiWhite: #fffffe;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", monospace, sans-serif;
+  color: var(--text);
+}
+
+body {
+  height: 100dvh;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+main {
+  flex-grow: 1;
+  opacity: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  cursor: context-menu;
+  font-size: 2.5rem;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+button.editBtn,
+button.deleteBtn {
+  padding: 0.75rem 1.5rem;
+  width: 7rem;
+  border-radius: 0.5rem;
+  border: 3px solid var(--text);
+  background-color: var(--wood);
+  color: var(--text);
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.25s ease;
+}
+
+button.editBtn:hover,
+button.deleteBtn:hover {
+  background-color: var(--text);
+  color: var(--wood);
+  filter: contrast(1.25);
+}
+
+dialog {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+  border-radius: 0.25rem;
+  border: 3px solid var(--text);
+  background-color: var(--white);
+  font-size: 1.25rem;
+  text-align: center;
+
+  & p:nth-child(1) {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  & hr {
+    border: 1px solid var(--text);
+    margin: 0.5rem 1.5rem;
+  }
+
+  & form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    & #errorTextEdit,
+    #errorTextDelete {
+      color: red;
+      font-size: 1rem;
+    }
+  }
+}
+
+.dialogInputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  & label {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  & input {
+    padding: 0.5rem;
+    margin-right: 1.65rem;
+    margin-left: 1.65rem;
+    border-radius: 0.5rem;
+    border: 3px solid var(--text);
+    background-color: var(--background);
+    font-size: 1.25rem;
+    text-align: center;
+  }
+}
+
+.dialogButtonGroup {
+  margin: 0 1.65rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  & button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 3px solid var(--text);
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.25s ease;
+  }
+
+  & button:nth-child(1) {
+    background-color: rgb(255, 78, 78);
+    color: var(--white);
+  }
+
+  & button:nth-child(1):hover {
+    background-color: rgb(255, 0, 0);
+    filter: contrast(1.25);
+  }
+
+  & button:nth-child(2) {
+    background-color: var(--wood);
+  }
+
+  & button:nth-child(2):hover {
+    background-color: var(--text);
+    color: var(--wood);
+    filter: contrast(1.25);
+  }
+}
+
+/* Animations */
+.sliderLeft,
+.sliderRight {
+  position: absolute;
+  top: 0px;
+  height: 100dvh;
+  width: 100dvw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../images/wood.webp") repeat center, var(--wood);
+  border: 4px solid black;
+}
+
+.sliderLeftBack,
+.sliderRightBack {
+  display: none;
+  position: absolute;
+  top: 0px;
+  height: 100dvh;
+  width: 100dvw;
+  justify-content: center;
+  align-items: center;
+  background: url("../images/wood.webp") repeat center, var(--wood);
+  border: 4px solid black;
+}
+
+.sliderLeftBack {
+  transform: translateX(100%);
+}
+
+.sliderRightBack {
+  transform: translateX(-100%);
+}
+
+.sliderLeft {
+  animation: slideLeft 1s forwards;
+}
+
+.sliderRight {
+  animation: slideRight 1s forwards;
+}
+
+.slideDown {
+  animation: slideDown 1s forwards;
+}
+
+.slideUp {
+  animation: slideUp 1s forwards;
+}
+
+.slideLeftAnimation {
+  animation: slideLeft 1s forwards;
+}
+
+.slideRightAnimation {
+  animation: slideRight 1s forwards;
+}
+
+.slideLeftBackAnimation {
+  animation: slideLeftBack 1s forwards;
+}
+
+.slideRightBackAnimation {
+  animation: slideRightBack 1s forwards;
+}
+
+.fadeIn-delay {
+  opacity: 0;
+  animation: fadeIn 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 0.75s;
+}
+
+.fadeOut {
+  opacity: 1;
+  animation: fadeOut 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes floating {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0.95);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideLeftBack {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+@keyframes slideRightBack {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .dialogButtonGroup {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
