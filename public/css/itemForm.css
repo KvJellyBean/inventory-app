@@ -1,0 +1,133 @@
+.mainItemForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form.itemForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  width: 35rem;
+  border: 3px solid var(--text);
+  background-color: var(--white);
+
+  & legend {
+    font-size: 1.75rem;
+    word-wrap: break-word;
+    text-wrap: wrap;
+    padding: 0.25rem 1rem;
+    border: 3px solid var(--text);
+    border-radius: 0.5rem;
+    background-color: var(--wood);
+    filter: brightness(1.15);
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .formBody {
+    gap: 1rem;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    .formInput {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      & input,
+      .mult-select-tag .wrapper .body.rounded {
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: 3px solid var(--text);
+        background-color: var(--background);
+        text-align: center;
+        font-size: 1.1rem;
+      }
+
+      .mult-select-tag .drawer ul li {
+        display: flex;
+
+        & input {
+          width: auto;
+          accent-color: #e9c248;
+        }
+      }
+    }
+
+    .formInput:nth-child(3),
+    .formInput:nth-child(4),
+    .formInput:nth-child(5),
+    button.submitItem {
+      grid-column: 1/3;
+
+      & input {
+        text-align: center;
+      }
+    }
+
+    button.submitItem {
+      background-color: var(--wood);
+      padding: 0.5rem;
+      font-weight: bold;
+      font-size: 1.25rem;
+      border: 3px solid var(--text);
+      margin-top: 1rem;
+      transition: 0.2s ease;
+    }
+
+    button.submitItem:hover {
+      background-color: var(--text);
+      color: var(--wood);
+      filter: contrast(1.25);
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  form.itemForm {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  main {
+    padding: 2rem;
+  }
+  form.itemForm {
+    width: auto;
+
+    & legend {
+      font-size: 1.35rem;
+    }
+
+    & button.submitItem {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  form.itemForm {
+    .formBody {
+      .formInput {
+        & input,
+        select {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  form.itemForm {
+    padding: 1.25rem;
+  }
+}
