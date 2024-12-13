@@ -41,8 +41,7 @@ form.categoryForm {
       flex-direction: column;
       justify-content: space-between;
 
-      & input,
-      select {
+      & input {
         width: 100%;
         padding: 0.5rem;
         border-radius: 0.5rem;
