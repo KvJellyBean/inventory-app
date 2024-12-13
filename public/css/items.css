@@ -221,6 +221,22 @@ a:hover {
   background-color: var(--text);
 }
 
+.noItemMsg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.itemsBox:has(.noItemMsg) {
+  border: 3px solid var(--text);
+  height: 50dvh;
+}
+
 @media screen and (max-width: 1400px) {
   main.items {
     padding: 3rem 1.5rem;
