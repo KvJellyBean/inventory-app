@@ -1,7 +1,21 @@
 <header>
-  <% if(page !== "Home") { %>
+  <% if(page === "Item Detail" || page === "Item Form") { %>
   <div class="homeButton">
-    <a href="/">Home</a>
+    <a href="/items">
+      <i class="fa-solid fa-arrow-left" aria-label="Back Button"></i>
+    </a>
+  </div>
+  <% } else if (page === "Category Form") { %>
+  <div class="homeButton">
+    <a href="/categories">
+      <i class="fa-solid fa-arrow-left" aria-label="Back Button"></i>
+    </a>
+  </div>
+  <% } else if (page !== "Home") { %>
+  <div class="homeButton">
+    <a href="/">
+      <i class="fa-solid fa-house" aria-label="Home"></i>
+    </a>
   </div>
   <% } %>
 
@@ -9,4 +23,6 @@
     <img src="/images/logo.png" alt="Logo Jellinventory" width="80" />
     <h1>Jellinventory</h1>
   </div>
+
+  <img src="/images/wood.webp" alt="Wood of Header" class="woodHeader" />
 </header>
