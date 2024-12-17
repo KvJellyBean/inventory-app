@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head', {title}) %>
+  <body>
+    <%- include('./partials/header', {page: "Item Form"}) %>
+
+    <main class="mainItemForm">
+      <form action="/items/<%= id %>/edit" method="POST" enctype="multipart/form-data" class="itemForm">
+        <legend><%= title %></legend>
+        
+        <div class="formBody">
+          <div class="formInput">
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value="<%= item.name %>"
+              required
+            />
+          </div>
+  
+          <div class="formInput">
+            <label for="quantity">Quantity:</label>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              value="<%= item.quantity %>"
+              max="9999"
+              required
+            />
+          </div>
+  
+          <div class="formInput">
+            <label for="price">Price:</label>
+            <input
+              type="number"
+              id="price"
+              name="price"
+              value="<%= item.price %>"
+              max="99999999"
+              required
+            />
+          </div>
+  
+          <div class="formInput">
+            <label for="categories">Categories:</label>
+            <select id="categories" name="categories" multiple>
+              <% categories.forEach(category => { %>
+              <option
+                value="<%= category.id %>"
+                <%= item.categories.includes(category.name) ? 'selected' : '' %>>
+                <%= category.name %>
+              </option>
+              <% }) %>
+            </select>
+          </div>
+  
+          <div class="formInput">
+            <label for="image">Image:</label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+            />
+          </div>
+  
+          <button type="submit" class="submitItem">Submit</button>
+        </div>
+      </form>
+    </main>
+
+    <%- include('./partials/footer') %>
+
+    <div class="sliderLeft"></div>
+    <div class="sliderRight"></div>
+    <div class="sliderLeftBack"></div>
+    <div class="sliderRightBack"></div>
+  </body>
+
+  <script src="/js/forms.js"></script>
+  <script>
+    new MultiSelectTag("categories", {
+      rounded: true,
+      placeholder: "Search",
+      tagColor: {
+        textColor: "#000000",
+        borderColor: "#000000",
+        bgColor: "#f6f6e9",
+      },
+    });
+
+    document.querySelector(".itemForm").addEventListener("submit", function(event) {
+      const selectedCategories = document.querySelectorAll(".input_checkbox:checked");
+      
+      if (selectedCategories.length === 0) {
+        event.preventDefault();  // Prevent form submission
+        alert("Please select at least one category.");
+      }
+    });
+
+  </script>
+  
+</html>
