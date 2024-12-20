@@ -12,16 +12,20 @@
       >
         <legend><%= title %></legend>
 
-        <label for="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value="<%= category.name %>"
-          required
-        />
+        <div class="formBody">
+          <div class="formInput">
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value="<%= category.name %>"
+              required
+            />
+          </div>
 
-        <button type="submit">Submit</button>
+          <button type="submit" class="submitItem">Submit</button>
+        </div>
       </form>
     </main>
 
