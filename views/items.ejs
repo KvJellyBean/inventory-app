@@ -38,6 +38,11 @@
         </div>
 
         <div class="itemsBox">
+          <% if (items.length === 0) { %>
+          <p class="noItemMsg">
+            Currently, there are no items to display here.
+          </p>
+          <% } else { %>
           <ul>
             <% items.forEach(item => { %>
             <li class="itemCard">
@@ -62,6 +67,7 @@
             </li>
             <% }) %>
           </ul>
+          <% } %>
         </div>
       </div>
 
