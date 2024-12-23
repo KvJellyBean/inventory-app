@@ -15,34 +15,44 @@ async function renderItems(req, res) {
     }
 
     const categories = await db.getCategories();
-    res.render("items", { title: "Items Page", items, categories });
+    setTimeout(() => {
+      res.render("items", { title: "Items Page", items, categories });
+    }, 1100);
   } catch (error) {
-    res.status(500).render("errorPage", {
-      title: "Error Page",
-      error: "Error fetching items.",
-    });
+    setTimeout(() => {
+      res.status(500).render("errorPage", {
+        title: "Error Page",
+        error: "Error fetching items.",
+      });
+    }, 1100);
   }
 }
 
 async function renderItemDetail(req, res) {
   const { id } = req.params;
   if (isNaN(id)) {
-    return res.status(400).render("errorPage", {
-      title: "Error Page",
-      error: "Invalid item ID.",
-    });
+    setTimeout(() => {
+      return res.status(400).render("errorPage", {
+        title: "Error Page",
+        error: "Invalid item ID.",
+      });
+    }, 1100);
   }
   try {
     const item = await db.getItemById(id);
     const items = await db.getItemsWithCategories();
     const theItem = items.find((i) => i.id === parseInt(id));
     item.categories = theItem.categories;
-    res.render("itemsDetail", { title: `${item.name} Detail`, item });
+    setTimeout(() => {
+      res.render("itemsDetail", { title: `${item.name} Detail`, item });
+    }, 1100);
   } catch (error) {
-    res.status(500).render("errorPage", {
-      title: "Error Page",
-      error: "Cannot find item.",
-    });
+    setTimeout(() => {
+      res.status(500).render("errorPage", {
+        title: "Error Page",
+        error: "Cannot find item.",
+      });
+    }, 1100);
   }
 }
 
@@ -57,48 +67,60 @@ async function renderItemsByCategory(req, res) {
     const items = await db.getItemsByCategory(category);
     res.json(items);
   } catch (err) {
-    res.status(500).render("errorPage", {
-      title: "Error Page",
-      error: "Error fetching items by category.",
-    });
+    setTimeout(() => {
+      res.status(500).render("errorPage", {
+        title: "Error Page",
+        error: "Error fetching items by category.",
+      });
+    }, 1100);
   }
 }
 
 async function renderNewItemForm(req, res) {
   try {
     const categories = await db.getCategories();
-    res.render("itemForm", { title: "New Item Form", categories });
+    setTimeout(() => {
+      res.render("itemForm", { title: "New Item Form", categories });
+    }, 1100);
   } catch (error) {
-    res.status(500).render("errorPage", {
-      title: "Error Page",
-      error: "Error fetching categories.",
-    });
+    setTimeout(() => {
+      res.status(500).render("errorPage", {
+        title: "Error Page",
+        error: "Error fetching categories.",
+      });
+    }, 1100);
   }
 }
 
 async function renderEditItemForm(req, res) {
   const { id } = req.params;
   if (isNaN(id)) {
-    return res.status(400).render("errorPage", {
-      title: "Error Page",
-      error: "Invalid item ID.",
-    });
+    setTimeout(() => {
+      return res.status(400).render("errorPage", {
+        title: "Error Page",
+        error: "Invalid item ID.",
+      });
+    }, 1100);
   }
 
   try {
     const item = await db.getItemById(id);
     const categories = await db.getCategories();
-    res.render("editItemForm", {
-      title: "Edit Item Form",
-      item,
-      categories,
-      id,
-    });
+    setTimeout(() => {
+      res.render("editItemForm", {
+        title: "Edit Item Form",
+        item,
+        categories,
+        id,
+      });
+    }, 1100);
   } catch (error) {
-    res.status(500).render("errorPage", {
-      title: "Error Page",
-      error: "Error fetching item.",
-    });
+    setTimeout(() => {
+      res.status(500).render("errorPage", {
+        title: "Error Page",
+        error: "Error fetching item.",
+      });
+    }, 1100);
   }
 }
 
@@ -108,15 +130,21 @@ async function createNewItem(req, res) {
   const imagePathSplit = imagePath ? imagePath.split("public") : null;
   const imagePathNew = imagePathSplit ? imagePathSplit[1] : null;
 
+  const categoryIds = Array.isArray(categories)
+    ? categories.map((category) => parseInt(category, 10))
+    : [parseInt(categories, 10)];
+
   try {
     const items = await db.getItemsWithCategories();
     const item = items.find((i) => i.name === name);
 
     if (item) {
-      return res.status(400).render("errorPage", {
-        title: "Error Page",
-        error: "Item name already exists.",
-      });
+      setTimeout(() => {
+        return res.status(400).render("errorPage", {
+          title: "Error Page",
+          error: "Item name already exists.",
+        });
+      }, 1100);
     }
 
     await db.addItem(
@@ -124,14 +152,16 @@ async function createNewItem(req, res) {
       parseInt(quantity),
       parseFloat(price),
       imagePathNew,
-      categories
+      categoryIds
     );
     res.redirect("/items");
   } catch (error) {
-    res.status(500).render("errorPage", {
-      title: "Error Page",
-      error: "Error creating item.",
-    });
+    setTimeout(() => {
+      res.status(500).render("errorPage", {
+        title: "Error Page",
+        error: "Error creating item.",
+      });
+    }, 1100);
   }
 }
 
@@ -150,17 +180,21 @@ async function updateItem(req, res) {
     );
 
     if (!item) {
-      return res.status(404).render("errorPage", {
-        title: "Error Page",
-        error: "Item not found.",
-      });
+      setTimeout(() => {
+        return res.status(404).render("errorPage", {
+          title: "Error Page",
+          error: "Item not found.",
+        });
+      }, 1100);
     }
 
     if (itemExist) {
-      return res.status(400).render("errorPage", {
-        title: "Error Page",
-        error: "Item name already exists.",
-      });
+      setTimeout(() => {
+        return res.status(400).render("errorPage", {
+          title: "Error Page",
+          error: "Item name already exists.",
+        });
+      }, 1100);
     }
 
     if (req.file && item.image) {
@@ -168,10 +202,12 @@ async function updateItem(req, res) {
 
       fs.unlink(oldImagePath, async (err) => {
         if (err) {
-          return res.status(500).render("errorPage", {
-            title: "Error Page",
-            error: "Error deleting image file.",
-          });
+          setTimeout(() => {
+            return res.status(500).render("errorPage", {
+              title: "Error Page",
+              error: "Error deleting image file.",
+            });
+          }, 1100);
         }
       });
     }
@@ -186,10 +222,12 @@ async function updateItem(req, res) {
     );
     res.redirect(`/items`);
   } catch (error) {
-    res.status(500).render("errorPage", {
-      title: "Error Page",
-      error: "Error updating item.",
-    });
+    setTimeout(() => {
+      res.status(500).render("errorPage", {
+        title: "Error Page",
+        error: "Error updating item.",
+      });
+    }, 1100);
   }
 }
 
@@ -199,10 +237,12 @@ async function deleteItem(req, res) {
   try {
     const item = await db.getItemById(id);
     if (!item) {
-      return res.status(404).render("errorPage", {
-        title: "Error Page",
-        error: "Item not found.",
-      });
+      setTimeout(() => {
+        return res.status(404).render("errorPage", {
+          title: "Error Page",
+          error: "Item not found.",
+        });
+      }, 1100);
     }
 
     if (item.image) {
@@ -210,10 +250,12 @@ async function deleteItem(req, res) {
 
       fs.unlink(imagePath, async (err) => {
         if (err) {
-          return res.status(500).render("errorPage", {
-            title: "Error Page",
-            error: "Error deleting image file.",
-          });
+          setTimeout(() => {
+            return res.status(500).render("errorPage", {
+              title: "Error Page",
+              error: "Error deleting image file.",
+            });
+          }, 1100);
         }
       });
     }
@@ -221,10 +263,12 @@ async function deleteItem(req, res) {
     await db.deleteItem(id);
     res.status(200).send("Item deleted");
   } catch (error) {
-    res.status(500).render("errorPage", {
-      title: "Error Page",
-      error: "Error deleting item.",
-    });
+    setTimeout(() => {
+      res.status(500).render("errorPage", {
+        title: "Error Page",
+        error: "Error deleting item.",
+      });
+    }, 1100);
   }
 }
 
