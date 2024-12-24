@@ -3,29 +3,40 @@ const db = require("../db/queries");
 
 async function renderCategories(req, res) {
   const categories = await db.getCategories();
-  res.render("categories", { title: "Categories", categories });
+  setTimeout(() => {
+    res.render("categories", { title: "Categories", categories });
+  }, 1100);
 }
 
 async function renderNewCategoryForm(req, res) {
-  res.render("categoryForm", { title: "New Category Form" });
+  setTimeout(() => {
+    res.render("categoryForm", { title: "New Category Form" });
+  }, 1100);
 }
 
 async function renderEditCategoryForm(req, res) {
   const { id } = req.params;
   if (isNaN(id)) {
-    return res.status(404).render("errorPage", {
-      title: "Error Page",
-      error: "Invalid category ID.",
-    });
+    setTimeout(() => {
+      return res.status(404).render("errorPage", {
+        title: "Error Page",
+        error: "Invalid category ID.",
+      });
+    }, 1100);
   }
   const category = await db.getCategoryById(id);
   if (!category) {
-    return res.status(404).render("errorPage", {
-      title: "Error Page",
-      error: "Category not found.",
-    });
+    setTimeout(() => {
+      return res.status(404).render("errorPage", {
+        title: "Error Page",
+        error: "Category not found.",
+      });
+    }, 1100);
   }
-  res.render("editCategory", { title: "Edit Category Form", category });
+
+  setTimeout(() => {
+    res.render("editCategory", { title: "Edit Category Form", category });
+  }, 1100);
 }
 
 async function createNewCategory(req, res) {
@@ -43,10 +54,12 @@ async function createNewCategory(req, res) {
     await db.addCategory(name);
     res.redirect("/categories");
   } catch (error) {
-    res.status(500).render("errorPage", {
-      title: "Error Page",
-      error: "Error creating category.",
-    });
+    setTimeout(() => {
+      res.status(500).render("errorPage", {
+        title: "Error Page",
+        error: "Error creating category.",
+      });
+    }, 1100);
   }
 }
 
@@ -57,31 +70,39 @@ async function updateCategory(req, res) {
     const categories = await db.getCategories();
     const category = categories.find((c) => c.name === name);
     if (category) {
-      return res.status(404).render("errorPage", {
-        title: "Error Page",
-        error: "Category already exists.",
-      });
+      setTimeout(() => {
+        return res.status(404).render("errorPage", {
+          title: "Error Page",
+          error: "Category already exists.",
+        });
+      }, 1100);
     }
 
     await db.updateCategory(id, name);
     res.redirect("/categories");
   } catch (error) {
-    res.status(500).render("errorPage", {
-      title: "Error Page",
-      error: "Error updating category.",
-    });
+    setTimeout(() => {
+      res.status(500).render("errorPage", {
+        title: "Error Page",
+        error: "Error updating category.",
+      });
+    }, 1100);
   }
 }
 
 async function deleteCategory(req, res) {
   const { id } = req.params;
+
   try {
     const items = await db.getItemsByCategory(id);
     if (items.length > 0) {
-      throw new Error("Cannot delete category with associated items");
+      return res
+        .status(400)
+        .send("Cannot delete category with associated items.");
     }
+
     await db.deleteCategory(id);
-    res.status(200).send("Category deleted");
+    res.status(200).send("Category deleted.");
   } catch (error) {
     res.status(500).send(error.message);
   }
