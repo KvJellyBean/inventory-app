@@ -29,7 +29,7 @@ async function getItemsWithCategories() {
 
 async function getItemById(itemId) {
   const query = `
-    SELECT i.id, i.name, i.quantity, i.price, i.image_path, c.name AS categories
+    SELECT i.id, i.name, i.quantity, i.price, i.image_path, c.name AS category_name
     FROM items i
     LEFT JOIN item_categories ic ON i.id = ic.item_id
     LEFT JOIN categories c ON ic.category_id = c.id
@@ -55,6 +55,8 @@ async function getItemById(itemId) {
       item.categories.push(row.category_name);
     }
   });
+
+  item.categories = [...new Set(item.categories)];
 
   return item;
 }
