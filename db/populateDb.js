@@ -30,24 +30,24 @@ INSERT INTO categories (name) VALUES
 ('Stationery');
 
 INSERT INTO items (name, quantity, price, image_path) VALUES
-('Smartphone', 50, 699.99, '/images/smartphone.jpg'),
-('Laptop', 30, 999.99, '/images/laptop.jpg'),
-('Tablet', 25, 499.99, '/images/tablet.jpg'),
-('Novel', 100, 19.99, '/images/novel.jpg'),
-('Cookbook', 80, 29.99, '/images/cookbook.jpg'),
-('Magazine', 150, 9.99, '/images/magazine.jpg'),
-('T-Shirt', 200, 15.99, '/images/tshirt.jpg'),
-('Jeans', 100, 39.99, '/images/jeans.jpg'),
-('Sweater', 50, 49.99, '/images/sweater.jpg'),
-('Wall Art', 70, 24.99, '/images/wall_art.jpg'),
-('Vase', 40, 19.99, '/images/vase.jpg'),
-('Cushion', 60, 15.99, '/images/cushion.jpg'),
-('Stuffed Animal', 80, 29.99, '/images/stuffed_animal.jpg'),
-('Puzzle', 90, 14.99, '/images/puzzle.jpg'),
-('Board Game', 50, 39.99, '/images/board_game.jpg'),
-('Notebook', 150, 5.99, '/images/notebook.jpg'),
-('Pen Set', 200, 9.99, '/images/pen_set.jpg'),
-('Craft Supplies', 70, 24.99, '/images/craft_supplies.jpg');
+('Smartphone', 50, 699.99, '/images/smartphone.png'),
+('Laptop', 30, 999.99, '/images/laptop.png'),
+('Tablet', 25, 499.99, '/images/tablet.png'),
+('Novel', 100, 19.99, '/images/novel.png'),
+('Cookbook', 80, 29.99, '/images/cookbook.png'),
+('Magazine', 150, 9.99, '/images/magazine.png'),
+('T-Shirt', 200, 15.99, '/images/tshirt.png'),
+('Jeans', 100, 39.99, '/images/jeans.png'),
+('Sweater', 50, 49.99, '/images/sweater.png'),
+('Wall Art', 70, 24.99, '/images/wall_art.png'),
+('Vase', 40, 19.99, '/images/vase.png'),
+('Cushion', 60, 15.99, '/images/cushion.png'),
+('Stuffed Animal', 80, 29.99, '/images/stuffed_animal.png'),
+('Puzzle', 90, 14.99, '/images/puzzle.png'),
+('Board Game', 50, 39.99, '/images/board_game.png'),
+('Notebook', 150, 5.99, '/images/notebook.png'),
+('Pen Set', 200, 9.99, '/images/pen_set.png'),
+('Craft Supplies', 70, 24.99, '/images/craft_supplies.png');
 
 INSERT INTO item_categories (item_id, category_id) VALUES
 (1, 1),  
